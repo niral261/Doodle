@@ -261,6 +261,18 @@ function PlayScreen() {
     }
   }, [socket, playerCount, addToast]);
 
+
+
+  // ──────────── NEW: Close Guess Detection ────────────
+  useEffect(() => {
+    if (socket) {
+      socket.on("close-guess", ({ message }) => {
+        console.log("Close guess!", message);
+        addToast(message, "warning");
+      });
+    }
+  }, [socket, addToast]);
+
   // ──────────── Turn events ────────────
   useEffect(() => {
     if (socket) {
@@ -668,11 +680,10 @@ function PlayScreen() {
               <input
                 value={inputMessage}
                 placeholder="Type your guess here"
-                className={`min-w-full active max-w-full text-black flex flex-wrap px-6 py-2 rounded-lg font-medium bg-sky-50 bg-opacity-40 border border-blue-300 placeholder-gray-400 text-md focus:outline-none focus:border-blue-400 focus:bg-white focus:ring-0 focus:shadow-[0_0px_10px_2px_#bfdbfe] ${
-                  currentUserDrawing || showWords || !gameStarted
-                    ? "cursor-not-allowed"
-                    : ""
-                }`}
+                className={`min-w-full active max-w-full text-black flex flex-wrap px-6 py-2 rounded-lg font-medium bg-sky-50 bg-opacity-40 border border-blue-300 placeholder-gray-400 text-md focus:outline-none focus:border-blue-400 focus:bg-white focus:ring-0 focus:shadow-[0_0px_10px_2px_#bfdbfe] ${currentUserDrawing || showWords || !gameStarted
+                  ? "cursor-not-allowed"
+                  : ""
+                  }`}
                 onChange={(e) => handleChangeText(e)}
                 disabled={
                   currentUserDrawing ||
@@ -686,9 +697,12 @@ function PlayScreen() {
               allChats.length > 0 &&
               allChats.map((chat, idx) => (
                 <p
-                  className={`${
-                    chat.rightGuess ? "bg-green-200 text-green-600" : ""
-                  }`}
+                  className={`${chat.rightGuess
+                    ? "bg-green-200 text-green-600"
+                    : chat.closeGuess
+                      ? "bg-yellow-100 text-yellow-700"
+                      : ""
+                    }`}
                   key={idx}
                 >
                   {chat.rightGuess

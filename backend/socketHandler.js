@@ -36,19 +36,22 @@ function registerSocketHandlers(io) {
       if (!player) return;
 
       const currentWord = gameManager.getCurrentWord();
-      const { rightGuess, returnObject } = chatManager.processMessage(
+      const { rightGuess, closeGuess, returnObject } = chatManager.processMessage(
         inputMessage,
         player,
         currentWord
       );
 
-      // Attach updated players list to the response
       returnObject.players = gameManager.getPlayers();
 
       io.emit("recieve-chat", returnObject);
 
       if (rightGuess) {
         gameManager.recordCorrectGuess(userId);
+      } else if (closeGuess) {
+        io.to(userId).emit("close-guess", {
+          message: "🔥 You're very close!",
+        });
       }
     });
 
