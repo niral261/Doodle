@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Home from './Home.jsx';
-import Email from './HowToPlay.jsx';
+import HowToPlay from './HowToPlay.jsx';
 import Help from './News.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faEnvelope, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
       </div>
       {selectedIcon === 'home' && <Home onClose={closeDetail} />}
-      {selectedIcon === 'email' && <Email onClose={closeDetail} />}
+      {selectedIcon === 'email' && <HowToPlay onClose={closeDetail} />}
       {selectedIcon === 'help' && <Help onClose={closeDetail} />}
     </div>
   );

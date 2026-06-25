@@ -4,7 +4,7 @@ Welcome to **Doodle**, a fun and engaging online multiplayer drawing and guessin
 
 ## Live Demo
 
-[Click Here](https://skribblay-you.onrender.com/)  
+[Click Here](https://doodle.onrender.com/)  
 
 > 💡 Open the link in **two separate tabs** to experience multiplayer mode (you’ll be joined together).
 
