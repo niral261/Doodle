@@ -30,7 +30,7 @@ Welcome to **Doodle**, a fun and engaging online multiplayer drawing and guessin
 
 ## Screenshots
 
-![Game Lobby](frontend/public/homescreen.png)
+![Game Lobby](frontend/public/homescreen.jpeg)
 *Game Lobby*
 
 ![Drawing Interface](frontend/public/drawscreen.png)
