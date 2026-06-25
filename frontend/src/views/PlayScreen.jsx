@@ -672,6 +672,24 @@ function PlayScreen() {
 
           {/* Chat panel */}
           <div className="w-[300px] h-[540px] border border-black flex flex-col-reverse rounded-b-lg p-1">
+            {currentHint && !currentUserDrawing && (
+              <div
+                style={{
+                  padding: "8px 12px",
+                  background: "linear-gradient(135deg, #667eea, #764ba2)",
+                  color: "#fff",
+                  borderRadius: "8px",
+                  margin: "4px 0",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  fontFamily: "'Comic Sans MS', 'Segoe UI', sans-serif",
+                  animation: "fadeIn 0.3s ease",
+                  textAlign: "center",
+                }}
+              >
+                🤖 AI Hint ({currentHint.hintNumber}/{currentHint.totalHints}): {currentHint.hint}
+              </div>
+            )}
             <form
               onSubmit={(e) => {
                 handleSubmitForm(e);
